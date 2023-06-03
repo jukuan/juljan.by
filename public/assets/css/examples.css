@@ -1,0 +1,26 @@
+.examples {
+    min-width: 600px;
+}
+
+#jGame01 {
+    background: #000 url(../../jb/jGame01/bg.jpg) 0 0 no-repeat;
+}
+
+#sparks {
+    outline: 1px solid rgba(9, 162, 255, 0.85);
+    position: relative;
+    height: 80px;
+    width: 600px;
+    margin: 0 auto;
+    background: url(http://magiclab.by/static/img/logo.png) 50% 0 no-repeat;
+}
+
+#sparks h6 {
+    margin: 0;
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #b3322d;
+}
