@@ -6,13 +6,14 @@ namespace App\View;
 
 class NavItem
 {
+    private ?string $date = null;
+
     public function __construct(
         private readonly string $href,
         private readonly string $text,
         private readonly string $requestUri = '/',
     )
     {
-
     }
 
     public function isActive(): bool
@@ -28,5 +29,17 @@ class NavItem
     public function getText(): string
     {
         return $this->text;
+    }
+
+    public function getDate(): ?string
+    {
+        return $this->date;
+    }
+
+    public function setDate(?string $date): self
+    {
+        $this->date = $date;
+
+        return $this;
     }
 }

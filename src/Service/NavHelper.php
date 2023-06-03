@@ -79,4 +79,23 @@ class NavHelper
 
         return [new NavItem('/', $this->translator->trans('nav.home'), $requestUri)] + $items;
     }
+
+    public function createArticleItems(string $lang, array $articleIndex): array
+    {
+        $requestUri = $this->requestStack->getCurrentRequest()->getRequestUri();
+        $requestUri = rtrim($requestUri, '/') . '/';
+        $requestUri = str_replace($lang, '/', $requestUri);
+
+        $items = [];
+
+        foreach ($articleIndex as $slug => $fields) {
+            $date = $fields['date'];
+            $title = $fields['title'];
+            $href = sprintf('/%s/art/%s', $lang, $slug);
+
+            $items[] = (new NavItem($href, $title, $requestUri))->setDate($date);
+        }
+
+        return $items;
+    }
 }

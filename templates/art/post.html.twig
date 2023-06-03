@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ articleTitle }}
+{% endblock %}
+
+
+{% block body %}
+    <main class="page samples-page">
+        <section class="clean-block clean-form dark">
+            <div class="container">
+                <div class="block-heading"></div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>{{ 'labels.articles'|trans }}</h3>
+
+                        <ul>
+                            {% for artNav in articleList %}
+                                <li class="nav-item" role="presentation {{ artNav.isActive ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ artNav.href }}">{{ artNav.text }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="col-md-8">
+                        <article>
+                            {{ articleBody|raw }}
+                        </article>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+{% endblock %}
