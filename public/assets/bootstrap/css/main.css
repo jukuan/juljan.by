@@ -20,7 +20,6 @@ a.navbar-brand.logo {
 
 #jPromo {
     width: 100%;
-    height: 250px;
     border: 1px solid;
 }
 
@@ -121,4 +120,8 @@ canvas#jCesliary {
     margin: 0 15px;
     border-top: 2px dotted;
     padding-top: 1em;
+}
+
+.page-footer a.hoster-link svg {
+    width: 120px;
 }

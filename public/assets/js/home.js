@@ -1,4 +1,4 @@
-(function homePage() {
+(function homePageBnrHandler() {
     let canvas = document.getElementById("jPromo");
     let ctx = canvas.getContext("2d");
     let circles = [];
