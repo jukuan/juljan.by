@@ -1,0 +1,18 @@
+site:
+  name: Жулжан
+  toggleNav: Пераключыць навігацыю
+
+nav:
+  home: Галоўная
+  services: Паслугі
+  prices: Кошты
+  about: Пра сайт
+  contacts: Кантакты
+
+label:
+  toHomePage: На галоўную
+
+error:
+  404:
+    title: Памылка 404
+    message: Старонкі не існуе

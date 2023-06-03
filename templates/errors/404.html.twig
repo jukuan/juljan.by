@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'nav.error'|trans }}
+{% endblock %}
+
+{% block body %}
+    <main class="page samples-page">
+        <section class="clean-block clean-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">{{ 'error.404.title'|trans }}</h2>
+                    <p>
+                        {{ 'error.404.message'|trans }}
+                    </p>
+                    <br/>
+                    <p>
+                        <a href="/" class="btn btn-info">{{ 'label.toHomePage'|trans }}</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

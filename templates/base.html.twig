@@ -1,16 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ lang }}_BY">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <title>
+            {% block title %}{{ 'Welcome!'|trans }}{% endblock %} / { 'site.name'|trans }}
+        </title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>🤓</text></svg>">
+
+        <link rel="stylesheet" href="/assets/bootstrap/css/main.css"/>
+        <link rel="stylesheet" href="/assets/fonts/simple-line-icons.min.css"/>
+        <meta property="og:image" content="/assets/img/screen_main.jpg"/>
+
         {% block stylesheets %}
         {% endblock %}
+    </head>
+
+    <body>
+        <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+            <div class="container">
+                <a class="navbar-brand logo" href="/">
+                    {{ 'site.name'|trans }}
+                </a>
+
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1">
+                    <span class="sr-only">{{ 'site.toggleNav'|trans }}</span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav ml-auto">
+                        {% for navItem in navHelper.headerItems %}
+                            <li class="nav-item" role="presentation {{ navItem.isActive ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ navItem.href }}">{{ navItem.text }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="langs">
+                    <span class="lang badge {{ navHelper.isCurrentLang('be') ? 'current' : '' }}" data-lang="be">Беларуская</span>
+                    <span class="lang badge {{ navHelper.isCurrentLang('ru') ? 'current' : '' }}" data-lang="ru">Русский</span>
+                </div>
+            </div>
+        </nav>
+
+        {% block body %}{% endblock %}
+
+        <footer class="page-footer dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h5>Як пачаць?</h5>
+                        <ul>
+                            <li><a href="contact-us.html">Замовіць</a></li>
+                            <li><a href="examples.html">Дэманстрацыі</a></li>
+                            <li><a href="samples.html">Шаблоны на продаж</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <h5>Пра кампанію</h5>
+                        <ul>
+                            <li><a href="about-us.html">Хто мы?</a></li>
+                            <li><a href="contact-us.html">Кантакты</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <h5>Падтрымка</h5>
+                        <ul>
+                            <li><a href="faq.html">Частыя пытанні</a></li>
+                            <li><a href="contact-us.html">Звароты</a></li>
+                        </ul>
+                    </div>
+
+                    <!--<div class="col-sm-3">
+                        <h5>Юрыдычны аспект</h5>
+                        <ul>
+                            <li><a href="#">Публічная аферта</a></li>
+                            <li><a href="#">Воблачнае сховішча</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>-->
+                </div>
+
+                <div class="legal-info">
+                    <p class="small">
+                        Аказанне паслуг:
+                        Місюкевіч Ю. В.,
+{#                        УНП 591355855.#}
+                    </p>
+
+                    <p class="small">
+                        <strong>Рэжым працы:</strong>
+                        пн-cб: 00:00—02:00, 08:00-10:00, 19:00-23:30.
+                        <strong>Тэл:</strong>+375<sup>292</sup>18<sub>640</sub>3.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                <p>ЖУЛЖАН.БАЙ &ndash; Жывая анімацыя Вашага бізнесу</p>
+            </div>
+        </footer>
+
+        <script async defer src="/assets/js/main.js"></script>
 
         {% block javascripts %}
         {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
     </body>
 </html>

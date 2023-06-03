@@ -1,0 +1,17 @@
+site:
+  name: Juljan
+
+nav:
+  home: Home
+  services: Services
+  prices: Prices
+  about: About
+  contacts: Contacts
+
+label:
+  toHomePage: На галоўную
+
+error:
+  404:
+    title: Памылка 404
+    message: Старонкі не існуе

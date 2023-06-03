@@ -1,0 +1,17 @@
+site:
+  name: Жулжан
+
+nav:
+  home: Главная
+  services: Услуги
+  prices: Цены
+  about: Про сайт
+  contacts: Контакты
+
+label:
+  toHomePage: На галоўную
+
+error:
+  404:
+    title: Ошибка 404
+    message: Упс. Такой страницы нету
