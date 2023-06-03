@@ -69,12 +69,17 @@ class ArticleToHtmlTransformer
                         'title' => $this->getTitleFromHtml($output) ?: $fileName,
                         'date' => date('Y-m-d', filemtime($mdFilePath)),
                     ];
+
+                    $this->prepareFilePath($targetFilePath);
                     file_put_contents($targetFilePath, $output);
+
                     $logInfo(sprintf('Success: file `%s` for lang \'%s\'', $mdFile, $lang));
                 }
             }
 
-            file_put_contents(sprintf('%s/%s/%s', $this->targetDir, $lang, '_index.json'), json_encode($fileIndex));
+            $targetFilePath = sprintf('%s/%s/%s', $this->targetDir, $lang, '_index.json');
+            $this->prepareFilePath($targetFilePath);
+            file_put_contents($targetFilePath, json_encode($fileIndex));
         }
     }
 
@@ -115,7 +120,7 @@ class ArticleToHtmlTransformer
      */
     private function getFileList(string $path): array
     {
-        return array_diff(scandir($path), ['.', '..']);
+        return array_diff(scandir($path) ?: [], ['.', '..']);
     }
 
     private function prepareFilePath(string $filePath): void
@@ -123,10 +128,10 @@ class ArticleToHtmlTransformer
         $dir = dirname($filePath);
 
         if (!file_exists($dir)) {
-            mkdir($dir, 0755);
+            mkdir($dir, 0755, true);
         }
 
-        if (file_exists($filePath)) {
+        if (file_exists($filePath) && !is_dir($filePath)) {
             unlink($filePath);
         }
     }
