@@ -26,6 +26,7 @@ class NavHelper
         'samples',
         'about',
         'contacts',
+        'think-tech',
     ];
 
     private const NAV_HEADER = [

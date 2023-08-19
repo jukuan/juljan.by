@@ -1,5 +1,5 @@
 site:
-  name: Жулжан
+  name: Juljan.By
   toggleNav: Пераключыць навігацыю
 
 nav:
@@ -8,6 +8,7 @@ nav:
   prices: Кошты
   about: Пра сайт
   contacts: Кантакты
+  samples: Прыклады
 
 label:
   toHomePage: На галоўную
@@ -16,3 +17,9 @@ error:
   404:
     title: Памылка 404
     message: Старонкі не існуе
+
+form:
+  name: Імя
+  email: Імэйл
+  text: Тэкст
+  send: Даслаць

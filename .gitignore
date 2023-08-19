@@ -1,4 +1,6 @@
 .idea
+var/cache/**/*
+var/log/**/*
 
 ###> symfony/framework-bundle ###
 /.env.local

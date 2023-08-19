@@ -10,47 +10,16 @@
             <div class="container">
                 <div class="block-heading">
                     <h2 id="title" class="text-info">Кантакты</h2>
-                    <p>Нашая пошта: <a href="mailto:we@juljan.by">we@juljan.by</a>.</p>
+                    <p>Мая пошта: <a href="mailto:site@juljan.by">site@juljan.by</a>.</p>
                     <br>
                     <p>
                         Калі Вы вырашылі аформіць замову або маеце пытанне,
-                        можаце напісаць нам на пошту або наўпрост запоўніць форму ніжэй.
+                        можаце напісаць мне на пошту або наўпрост запоўніць форму ніжэй.
                     </p>
                 </div>
 
-                <form id="contact" action="/feedback" method="post"
-                      data-success="Дзякуй! Вашае паведамленне адпраўлена.">
-                    <input id="fuck-off" type="hidden" name="fuck-off-spam"
-                           value="67d7a9b749229a2fb2812726c516bf460caf92a6">
-                    <input type="hidden" name="sender" value="form">
-
-                    <div class="form-group">
-                        <label for="name">Вашае Імя</label>
-                        <input class="form-control"
-                               id="name"
-                               name="name"
-                               autocomplete="name" type="text"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Ваш Email</label>
-                        <input class="form-control"
-                               id="email"
-                               name="email"
-                               autocomplete="email" type="text"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="msg">Паведамленнне</label>
-                        <textarea name="msg"
-                                  id="msg"
-                                  class="form-control"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="submit"
-                               class="btn btn-primary btn-block" value="Даслаць">
-                    </div>
+                <form method="POST">
+                    {{ form(form) }}
                 </form>
             </div>
         </section>

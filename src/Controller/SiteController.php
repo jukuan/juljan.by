@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Service\LangHelper;
 use App\Service\NavHelper;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,12 +21,13 @@ class SiteController extends AbstractController
         private readonly LangHelper $langHelper,
         private readonly NavHelper $navHelper,
         private readonly TwigEnvironment $twig,
+        private readonly EntityManagerInterface $em,
     )
     {
     }
 
     #[Route('/', name: 'site_index')]
-    public function index(Request $request, TranslatorInterface $translator): Response
+    public function index(Request $request): Response
     {
         $locale = $request->getLocale();
         $response = $this->redirect('/' . $locale);

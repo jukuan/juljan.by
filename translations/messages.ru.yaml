@@ -1,5 +1,6 @@
 site:
-  name: Жулжан
+  name: Юльян
+  toggleNav: Переключить навигацию
 
 nav:
   home: Главная
@@ -7,11 +8,18 @@ nav:
   prices: Цены
   about: Про сайт
   contacts: Контакты
+  samples: Примеры
 
 label:
-  toHomePage: На галоўную
+  toHomePage: На главную
 
 error:
   404:
     title: Ошибка 404
     message: Упс. Такой страницы нету
+
+form:
+  name: Имя
+  email: Имейл
+  text: Текст
+  send: Отправить

@@ -51,7 +51,10 @@ nav.navbar .container .langs {
 
 @media (max-width: 991.98px) {
     nav.navbar .container .langs {
-        left: 142px;
+        /*left: 142px;*/
+        top: -6px;
+        left: 50%;
+        margin-left: -100px;
     }
 }
 
@@ -62,10 +65,11 @@ nav.navbar .container .langs {
 }
 
 nav.navbar .container .langs .badge {
-    padding: 3px 5px;
+    padding: 2px 3px;
     background: #ce1126;
     color: #fff;
-    min-width: 72px;
+    min-width: 50px;
+    border-radius: 0;
 }
 
 nav.navbar .container .langs .badge.current {
@@ -122,6 +126,12 @@ canvas#jCesliary {
     padding-top: 1em;
 }
 
-.page-footer a.hoster-link svg {
-    width: 120px;
+.navbar-svg-logo {
+    max-width: 40px;
+}
+
+@media (min-width: 992px) {
+    .navbar-svg-logo {
+        margin-left: -40px;
+    }
 }
