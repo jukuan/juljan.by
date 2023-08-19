@@ -18,6 +18,10 @@ DirectoryIndex index.php
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # Redirect to non-www and enforce HTTPS
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
     # This RewriteRule is used to dynamically discover the RewriteBase path.
     # See https://httpd.apache.org/docs/current/mod/mod_rewrite.html#rewriterule
     # Here we will compare the stripped per-dir path *relative to the filesystem
