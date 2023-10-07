@@ -12,6 +12,12 @@ nav.navbar {
     }
 }
 
+@keyframes logoBgChange {
+    0% { background: #eee; }
+    50% { background: #efefef; }
+    100% { background: #eee; }
+}
+
 a.navbar-brand.logo {
     background: #eee;
     border-radius: 50%;
@@ -19,6 +25,14 @@ a.navbar-brand.logo {
     height: 70px;
     text-align: center;
     display: block;
+    transition: all .3s ease;
+    animation: logoBgChange 5s infinite;
+}
+
+a.navbar-brand.logo svg {
+    width: 100%;
+    height: 100%;
+    transition: all .3s ease;
 }
 
 #jPromo {
@@ -27,7 +41,7 @@ a.navbar-brand.logo {
 }
 
 .landing-page section.clean-hero {
-    background-image: url('../../img/tech/image4.jpg');
+    background-image: url('../img/tech/image4.jpg');
     /*color: rgba(9, 162, 255, .85);*/
     color: rgba(192, 128, 128, .75);
 }
