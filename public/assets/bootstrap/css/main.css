@@ -1,7 +1,7 @@
 @import "bootstrap.min.css";
 
 nav.navbar {
-    padding: .5rem 0 0;
+    padding: .5rem 3vw;
     box-shadow: none !important;
     border-bottom: 1px solid #ce1126;
 }
@@ -13,9 +13,12 @@ nav.navbar {
 }
 
 a.navbar-brand.logo {
-    color: #ce1126;
-    font-size: 30px;
-    text-transform: uppercase;
+    background: #eee;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    display: block;
 }
 
 #jPromo {
@@ -25,7 +28,8 @@ a.navbar-brand.logo {
 
 .landing-page section.clean-hero {
     background-image: url('../../img/tech/image4.jpg');
-    color: rgba(9, 162, 255, 0.85);
+    /*color: rgba(9, 162, 255, .85);*/
+    color: rgba(192, 128, 128, .75);
 }
 
 .spark {
@@ -51,23 +55,22 @@ nav.navbar .container .langs {
 
 @media (max-width: 991.98px) {
     nav.navbar .container .langs {
-        /*left: 142px;*/
-        top: -6px;
-        left: 50%;
-        margin-left: -100px;
+        top: 0;
+        left: 85px;
     }
 }
 
 @media (min-width: 992px) {
     nav.navbar .container .langs {
-        top: -4px;
+        top: 0;
+        left: 95px;
     }
 }
 
 nav.navbar .container .langs .badge {
     padding: 2px 3px;
-    background: #ce1126;
-    color: #fff;
+    /*background: #ce1126;*/
+    color: #212121;
     min-width: 50px;
     border-radius: 0;
 }
