@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:image" content="/assets/img/screen_main.jpg"/>
 {#        <link rel="preconnect" href="https://fonts.googleapis.com">#}
 {#        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>#}
 {#        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">#}
@@ -10,11 +11,21 @@
         <title>
             {% block title %}{{ 'Welcome!'|trans }}{% endblock %} / {{ 'site.name'|trans }}
         </title>
-        <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20%3E%0A%20%20%3Ccircle%20cx%3D%2264%22%20cy%3D%2264%22%20r%3D%2250%22%20fill%3D%22%23f8f9fa%22%20stroke%3D%22%23343a40%22%20stroke-width%3D%221%22%20%2F%3E%0A%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%20dy%3D%220.33em%22%20fill%3D%22%23ce1126%22%20font-size%3D%2268%22%20font-family%3D%22Arial%22%3EBy%3C%2Ftext%3E%0A%3C%2Fsvg%3E">
 
+        {# Favicons #}
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/assets/favicon/site.webmanifest">
+        <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#3ebbdf">
+        <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+        <meta name="msapplication-TileColor" content="#eeeeee">
+        <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+
+        {# CSS #}
         <link rel="stylesheet" href="/assets/bootstrap/css/main.css"/>
         <link rel="stylesheet" href="/assets/fonts/simple-line-icons.min.css"/>
-        <meta property="og:image" content="/assets/img/screen_main.jpg"/>
 
         {% block stylesheets %}
         {% endblock %}

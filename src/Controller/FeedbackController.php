@@ -57,6 +57,39 @@ class FeedbackController extends AbstractController
         ]);
     }
 
+    #[Route('/{lang}/order', name: 'feedback_order')]
+    public function order(Request $request, string $lang): Response
+    {
+        $view = $lang . '/contacts.html.twig';
+        $form = $this->createForm(FeedbackContactType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Process the form data
+            $entity = $form->getData();
+            $this->em->persist($entity);
+            $this->em->flush();
+
+            // Redirect or render a response
+            return $this->redirectToRoute('feedback_sent', ['lang' => $lang]);
+        }
+
+        $form->get('type')->setData('order');
+
+        if ($subject = $request->get('subject')) {
+            $form->get('text')->setData(
+                sprintf('Замаўляю: %s', $subject)
+            );
+        }
+
+
+        return $this->render($view, [
+            'lang' => $lang,
+            'navHelper' => $this->navHelper,
+            'form' => $form->createView(),
+        ]);
+    }
+
     #[Route('/{lang}/sent', name: 'feedback_sent')]
     public function success(Request $request, string $lang): Response
     {
