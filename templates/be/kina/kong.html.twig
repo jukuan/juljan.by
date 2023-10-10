@@ -4,6 +4,52 @@
     TestingTitle003 for KinaKong
 {% endblock %}
 
+{% block stylesheets %}
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
+        }
+
+        .form-text {
+            width: 100%;
+            max-width: 990px;
+            padding: 15px;
+            margin: auto;
+        }
+
+        .form-text table {
+            border-collapse: collapse;
+        }
+
+        .form-text table td {
+            border: 1px solid #888;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
     <main class="form-text">
         {% if (tableHtml is defined) %}
