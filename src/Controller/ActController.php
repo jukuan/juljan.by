@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ActController extends AbstractController
 {
     private const SLUGS = [
-        '2023|09_tnn' => [
+        /*'2023|09_tnn' => [
             'dateRange' => '2023-09-09 - 2023-10-11',
             'description' => 'Дапрацоўкі зробленыя для сайта <a href="https://tn.by">tn.by</a>. На іх даю гарантыю (і бесплатную тэх.падтрымку) — два месяцы.',
             'rate' => 15,
@@ -61,7 +61,7 @@ class ActController extends AbstractController
                     'hours' => 8,
                 ],
             ],
-        ],
+        ],*/
     ];
 
     #[Route('/act/{slug}', name: 'act_view')]

@@ -60,6 +60,11 @@ class NavHelper
         return $lang === $this->translator->getLocale();
     }
 
+    public function toLang(string $lang): string
+    {
+        return str_replace($this->translator->getLocale(), $lang, $this->requestStack->getMainRequest()->getRequestUri());
+    }
+
     /**
      * @return NavItem[]
      */

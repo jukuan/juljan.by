@@ -1,0 +1,36 @@
+{% extends 'bootstrap5.html.twig' %}
+
+{% block title %}
+    {{ t('Text to table Converter') }}
+{% endblock %}
+
+{% block body %}
+    <main class="form-text">
+        {% if (tableHtml is defined) %}
+            <div class="">
+                {{ tableHtml | raw }}
+            </div>
+        {% else %}
+            <form method="POST">
+                <h1 class="h3 mb-3 fw-normal text-center">
+                    Text to Table
+                </h1>
+
+                <p>
+                    Please input your text from Word!
+                </p>
+
+                <div class="form-floating">
+                    <textarea id="floatingInput" name="text" class="form-control" placeholder="sdfds"></textarea>
+                    <label for="floatingInput">The source text</label>
+                </div>
+
+                <br/>
+
+                <p class="text-center">
+                    <button class="btn btn-lg btn-primary" type="submit">Process it</button>
+                </p>
+            </form>
+        {% endif %}
+    </main>
+{% endblock %}

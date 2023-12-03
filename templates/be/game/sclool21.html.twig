@@ -1,0 +1,181 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Інтэрактыўны фільм'|trans }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/proj/2021/mschool21/css/fa.css">
+    <link rel="stylesheet" href="/proj/2021/mschool21/css/base-movie.css">
+    <style>
+        .movie-wrapper {
+            overflow: hidden;
+        }
+
+        .movie-wrapper .movie-choice {
+            padding: 0;
+        }
+
+        .movie-wrapper .movie-choice .movie-choice-content {
+            background: rgba(0,0,0,.85);
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        window.jMovie = window.jMovie || {};
+        window.jMovie.uri = '/proj/2021/mschool21/';
+        window.jMovie.session = {
+            title: 'Буллинг',
+            artist: 'UNICEF',
+            artwork: [
+                {
+                    src: '/proj/2021/mschool21/poster.jpg',
+                    sizes: '1280x720',
+                    type: 'image/jpg'
+                }
+            ]
+        }
+    </script>
+    <script src="/proj/2021/mschool21/js/jMovie.js"></script>
+{% endblock %}
+
+{% block body %}
+    <main class="page">
+        <section class="clean-block">
+            <div class="container">
+                <br/>
+                <br/>
+                <br/>
+                <h2 class="text-center">
+                    Інтерактыўны фільм
+                </h2>
+
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <p class="lead">
+                            Сучасныя браўзеры даюць цудоўную магчымасць стварэння дынамічнага кантэнта.
+                            Калі звязаць клікі мышкай з пераключэннем наступнага элемента відэа, то атрымаецца — інтэрактыўны ролік.
+                        </p>
+
+                        <p>
+                            Многія называюць такі падыход «гейміфікацыяй».
+                            Мне ж цікава было распрацаваць не дужа вялікі JavaScript-код,
+                            які адказвае за пераключэнне эпізодаў роліка, паўзаў і нават можа збіраць статыстыку праглядаў
+                            (не ўсім замоўцам гэта патрэбна, дарэчы).
+                            Асобны кайф разумець, што вёрстка кожнаг наступнага інтэрактыўнага фільма робіцца значна хутчэй чым папярэдняга.
+                            Тут я кажу толькі за сваю працу, без працы мантажораў, сцэнарыстаў, актораў ды інш.
+                        </p>
+
+                        <p>
+                            Ніжэй прыклад інтэрактыўнага фільма, дзе ад вашага выбару залежыць, які наступны эпізод будзе прадэманстраваны.
+                        </p>
+                    </div>
+                </div>
+
+                <div id="movie-wrapper" data-mapping="/proj/2021/mschool21/mapping.json" class="art-text text-full movie-wrapper">
+
+                    <video id="movie" playsinline="" autobuffer="" poster="/proj/2021/mschool21/poster.jpg" class="movie-video" data-statistic-start="movie-statistic/start" data-statistic-end="movie-statistic/end" data-season="movieschool21" data-movie-file-name="000ABC" data-movie-file-dir="/proj/2021/mschool21/" data-movie-part-name="000ABC" preload="auto">
+
+                        <source src="/proj/2021/mschool21/000ABC.mp4" type="video/mp4">
+
+                        <p class="no-video">
+                            Ваш браузер не поддерживает элемент video.
+                        </p>
+                    </video>
+
+                    <div id="movie-loading-overlay" class="movie-loading-overlay">
+
+                        <img class="poster" id="movie-load-poster" src="/proj/2021/mschool21/poster.jpg" alt="">
+
+                        <svg style="display:none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                            <circle cx="50" cy="50" fill="none" stroke="#f3f3f3" stroke-width="6" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" style="animation-play-state: running; animation-delay: 0s;" transform="rotate(110.355 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.408450704225352s" values="0 50 50;360 50 50" keyTimes="0;1" style="animation-play-state: running; animation-delay: 0s;"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+
+                    <div id="movie-info-text" style="display: none" class="movie-info-text"></div>
+
+                    <div id="movie-choice" class="movie-choice">
+                        <div class="movie-choice-overlay"></div>
+
+                        <div id="movie-choice-content" class="movie-choice-content">
+                            <div class="movie-choice-text">
+                                <p>Открыть двери?</p>
+                            </div>
+
+                            <div class="movie-choice-buttons">
+                                <a class="textA btn btn-choice" data-next-movie="1-1,3,4">
+                                    Нет
+                                </a>
+
+                                <a class="textB btn btn-choice" data-next-movie="1-2,2,3,4">
+                                    Нет
+                                </a>
+                            </div>
+                        </div>
+
+                        <audio id="movie-audio" loop="" hidden="">
+                            <source src="/proj/2021/mschool21/select-music.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <div id="movie-controls" class="movie-controls">
+                        <div class="buttons-left buttons-part clearfix">
+                            <button id="movie-play" style="display: none" class="fa fa-play" aria-hidden="true" title="Воспроизведение"></button>
+                            <button id="movie-pause" style="display: none" class="fa fa-pause" aria-hidden="true" title="Пауза"></button>
+                            <div class="movie-timing">
+                                <span id="movie-current">0:00</span>
+                                <span class="sep">/</span>
+                                <span id="movie-duration">0:00</span>
+                            </div>
+                        </div>
+
+                        <div class="buttons-right buttons-part">
+                            <div style="display: none">
+                                <button id="movie-backward" class="fa fa-backward" aria-hidden="true" title="Перемотать назад"></button>
+                                <button id="movie-forward" class="fa fa-forward" aria-hidden="true" title="Перемотать вперёд"></button>
+                                <button id="movie-to-end" style="margin-right: 2em" class="fa fa-fast-forward" aria-hidden="true" title="Перемотать в конец"></button>
+                            </div>
+
+                            <button id="movie-fullscreen" class="fa fa-arrows-alt" aria-hidden="true" title="Полноэкранный режим"></button>
+                            <button id="movie-normalscreen" style="display: none" class="fa fa-expand" aria-hidden="true" title="Обычный экран"></button>
+                        </div>
+
+                        <div id="movie-progress-bar" class="progress-bar"></div>
+                    </div>
+
+                    <button id="movie-start" class="btn btn-lg btn-primary btn-start" title="Начать">
+                        <i class="fa fa-play"></i> <span>Начать</span>
+                    </button>
+                </div>
+
+                <br/>
+
+                <p>
+                    Ролік стораны камандай
+                    <a href="https://www.unicef.org/belarus">UNICEF Belarus</a>
+                    і ўсе правы на яго належаць аўтарам.
+                </p>
+
+                <p class="text-center">
+                    * * * *
+                </p>
+
+                <h4>Пад капотам</h4>
+                <ul>
+                    <li>кансольны скрыпт для мініфікацыі памеру відэа-файла з захаваннем добрай для інтэрнэту якасці;</li>
+                    <li>скрыпт праверкі цэласнасці для пабудовы графа: ад першага эпізода да ўсіх магчымых канцовак;</li>
+                    <li>JavaScript-код для дэманстрацыі эпізодаў і кіравання пераключэннямі;</li>
+                    <li>асобная вёрстка пад паўнаэкранны рэжым і мабільныя дэвайсы;</li>
+                    <li>(апцыянальна) збор статыстыкі праглядаў кожнага эпізоду.</li>
+                </ul>
+                <p>
+                </p>
+            </div>
+
+        </section>
+    </main>
+{% endblock %}

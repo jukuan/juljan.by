@@ -107,9 +107,9 @@
                     </div>
 
                     <div class="langs">
-                        <a href="/be" class="lang badge {{ navHelper.isCurrentLang('be') ? 'current' : '' }}" data-lang="be">Беларуская</a>
-                        <a href="/en" class="lang badge {{ navHelper.isCurrentLang('en') ? 'current' : '' }}" data-lang="en">English</a>
-                        <a href="/ru" class="lang badge {{ navHelper.isCurrentLang('ru') ? 'current' : '' }}" data-lang="ru">Русский</a>
+                        <a href="{{ navHelper.toLang('be') }}" class="lang badge {{ navHelper.isCurrentLang('be') ? 'current' : '' }}" data-lang="be">Беларуская</a>
+                        <a href="{{ navHelper.toLang('en') }}" class="lang badge {{ navHelper.isCurrentLang('en') ? 'current' : '' }}" data-lang="en">English</a>
+                        <a href="{{ navHelper.toLang('ru') }}" class="lang badge {{ navHelper.isCurrentLang('ru') ? 'current' : '' }}" data-lang="ru">Русский</a>
                     </div>
                 </div>
             </nav>
@@ -147,7 +147,10 @@
                 }
             });
         </script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+{#        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>#}
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
         {% block javascripts %}
