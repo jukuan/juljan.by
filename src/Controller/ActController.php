@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Service\LangHelper;
+use App\Service\NavHelper;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -13,6 +16,15 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ActController extends AbstractController
 {
+    public function __construct(
+        private readonly LangHelper $langHelper,
+        private readonly NavHelper $navHelper,
+        private readonly TwigEnvironment $twig,
+        private readonly EntityManagerInterface $em,
+    )
+    {
+    }
+
     private const SLUGS = [
         /*'2023|09_tnn' => [
             'dateRange' => '2023-09-09 - 2023-10-11',
@@ -64,7 +76,7 @@ class ActController extends AbstractController
         ],*/
     ];
 
-    #[Route('/act/{slug}', name: 'act_view')]
+    #[Route('/act/old/{slug}', name: 'act_view')]
     public function view(string $slug): Response
     {
         $details = self::SLUGS[$slug] ?? null;
@@ -92,6 +104,52 @@ class ActController extends AbstractController
             'jobs' => $jobs,
             'details' => $details,
             'currency' => $details['currency'] ?? '',
+        ]);
+    }
+
+    #[Route('/act/{slug}', name: 'act_dtlview')]
+    public function dtlView(string $slug): Response
+    {
+        $rows = $this->em->getConnection()->executeQuery(
+            'SELECT * FROM `_log_time` WHERE project_key LIKE :projectKey and repaid = 0',
+            ['projectKey' => $slug]
+        )->fetchAllAssociative();
+
+        if ([] === $rows) {
+            // 404
+        }
+
+        $minDate = $maxDate = null;
+        $jobs = [];
+        $details = [
+            'hours' => 0,
+            'sum' => 0,
+            'currency' => '$',
+        ];
+        $rate = 15;
+
+        foreach ($rows as $row) {
+            $hours = $row['hours'] ?: 1;
+            $row['price'] = $hours * $rate;
+            $jobs[] = $row;
+
+            $details['hours'] += $hours;
+            $details['sum'] += $row['price'];
+
+            $date = new \DateTime($row['created_at']);
+            $minDate = $minDate ?? $date;
+            $minDate = min($minDate, $date);
+            $maxDate = $maxDate ?? $date;
+            $maxDate = max($maxDate, $date);
+        }
+
+//        $details['description'] = '';
+        $details['dateRange'] = sprintf('%s &ndash; %s', $minDate->format('Y-m-d'), $maxDate->format('Y-m-d'));
+        $details['actNum'] = date('Y-m-d');
+
+        return $this->render('act/'.$slug.'.html.twig', [
+            'jobs' => $jobs,
+            'details' => $details,
         ]);
     }
 }
