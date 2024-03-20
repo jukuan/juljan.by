@@ -110,6 +110,7 @@ class ActController extends AbstractController
     #[Route('/act/{slug}', name: 'act_dtlview')]
     public function dtlView(string $slug): Response
     {
+        $slug = strtolower($slug);
         $rows = $this->em->getConnection()->executeQuery(
             'SELECT * FROM `_log_time` WHERE project_key LIKE :projectKey and repaid = 0',
             ['projectKey' => $slug]
@@ -126,7 +127,15 @@ class ActController extends AbstractController
             'sum' => 0,
             'currency' => '$',
         ];
-        $rate = 15;
+
+        if ('dtl' === $slug) {
+            $rate = 15;
+        } elseif ('gvr' === $slug) {
+            $rate = 0;
+        } else {
+            $rate = 10;
+        }
+
 
         foreach ($rows as $row) {
             $hours = $row['hours'] ?: 1;
