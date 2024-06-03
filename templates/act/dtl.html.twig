@@ -83,7 +83,7 @@
                             <tbody>
                             {% for jobFields in jobs %}
                                 <tr>
-                                    <td>{{ jobFields.created_at }}</td>
+                                    <td>{{ jobFields.date ?: jobFields.created_at }}</td>
                                     <td>{{ jobFields.comment }}</td>
                                     <td>{{ jobFields.hours }}</td>
                                     <td>{{ jobFields.price }} {{ details.currency }}</td>

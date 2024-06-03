@@ -153,7 +153,7 @@ class ActController extends AbstractController
         }
 
 //        $details['description'] = '';
-        $details['dateRange'] = sprintf('%s &ndash; %s', $minDate->format('Y-m-d'), $maxDate->format('Y-m-d'));
+        $details['dateRange'] = sprintf('%s &ndash; %s', $minDate?->format('Y-m-d'), $maxDate?->format('Y-m-d'));
         $details['actNum'] = date('Y-m-d');
 
         return $this->render('act/'.$slug.'.html.twig', [
