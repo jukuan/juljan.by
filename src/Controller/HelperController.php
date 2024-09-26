@@ -13,17 +13,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment as TwigEnvironment;
 use Symfony\Component\HttpFoundation\Request;
 
-class HelperController extends AbstractController
+class HelperController extends FrontController
 {
-    public function __construct(
-        private readonly LangHelper $langHelper,
-        private readonly NavHelper $navHelper,
-        private readonly TwigEnvironment $twig,
-        private readonly EntityManagerInterface $em,
-    )
-    {
-    }
-
     #[Route('/{lang}/helper/txt2tbl', name: 'helper_txt2tbl')]
     public function index(Request $request): Response
     {

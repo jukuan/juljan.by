@@ -12,17 +12,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment as TwigEnvironment;
 
-class FeedbackController extends AbstractController
+class FeedbackController extends FrontController
 {
-    public function __construct(
-        private readonly LangHelper $langHelper,
-        private readonly NavHelper $navHelper,
-        private readonly TwigEnvironment $twig,
-        private readonly EntityManagerInterface $em,
-    )
-    {
-    }
-
     #[Route('/{lang}/feedback', name: 'site_feedback')]
     public function index(Request $request, string $lang): Response
     {
