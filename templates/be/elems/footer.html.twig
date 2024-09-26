@@ -2,6 +2,27 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
+                <h5>Апісанне аплаты</h5>
+                <ul>
+                    <li>
+                        <a href="/pay/erip">
+                            Оплата через систему ЕРИП
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/pay/methods">
+                            Способы оплаты через сайт
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/pay/refund">
+                            Условия возврата денег
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-sm-3">
                 <h5>Прасоўванне ў інтэрнэт</h5>
                 <ul>
                     <li><a href="/be/think-tech">Напісаць тэх.заданне</a></li>
@@ -36,25 +57,28 @@
         </div>
 
         <div class="legal-info row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="d-flex d-inline-block align-items-center align-content-top">
-                    {#<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" style="max-width: 48px">
-                                <circle cx="64" cy="64" r="50" fill="#f8f9fa" stroke="#343a40" stroke-width="1" />
-                                <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#343a40" font-size="96" font-family="Brush Script MT" transform="rotate(90, 64, 64)">Ю</text>
-                            </svg>#}
+{#                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" style="max-width: 48px">#}
+{#                        <circle cx="64" cy="64" r="50" fill="#f8f9fa" stroke="#343a40" stroke-width="1" />#}
+{#                        <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#343a40" font-size="96" font-family="Brush Script MT" transform="rotate(90, 64, 64)">Ю</text>#}
+{#                    </svg>#}
 
-                    <div>
-                        <p>
-                            Па-магчымасці, не тэлефануйце.
-                            Пішыце лісты: <strong>i[at]juljan.by</strong>.
-                        </p>
-                        <p class="small">
-                            Тут інфа для падатковай, можна не чытаць.
-                            <br/>
-                            Аказанне паслуг:
-                            Місюкевіч Ю. В.,
-                            УНП НА6052430 (Беларусь).
-                        </p>
+                    <div class="b-legal">
+                        <h5>Прававая інфармацыя</h5>
+
+                        {% if (isHome|default(false)) %}
+                            <p>
+                                Ніжэй звесткі для падатковай (можна не чытаць).
+                            </p>
+                            <p class="small">
+                                <strong>Тэл.</strong>: +375292186403 (лепш не тэлефануйце).
+                                Пішыце лісты: <strong>i@juljan.by</strong> (у тэме абавязкова пазначце літару «ў», інакш ліст трапіць у спам).
+                            </p>
+                            <p class="small">
+                                Адрас: Рэспубліка Беларусь, г. Ліда, вул. Рыбіноўскага, 82
+                            </p>
+                        {% endif %}
 
                         <p class="small">
                             Аказанне паслуг па распрацоўцы вэб-сайтаў;
@@ -63,21 +87,41 @@
                             анлайн-навучанне працы на кампутары.
                         </p>
 
-{#                        <p class="small">#}
-{#                            <strong>Рэжым працы:</strong>#}
-{#                            Пн-Сб: 00:00—02:00, 08:00-10:00, 19:00-23:30.#}
-{#                        </p>#}
+                        <p class="small">
+                            <strong>Рэжым працы:</strong>
+                            Пн-Пт: 19:30-22:30 (персанальна).
+                            Аўтаматызаваны софт сайта — кругласуткава.|
+
+                            <a href="">Аплата на сайце</a>
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 text-right">
-
+            <div class="col-md-12 text-center">
+                <div class="l-pay-logos">
+                    {% for imgSrc in payLogos %}
+                        <span class="b-pay-logo">
+                            <img height="42" src="{{ imgSrc }}" alt=""/>
+                        </span>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
 
     <div class="footer-copyright">
-        <p>Юльян.By &ndash; Web-распрацоўка ад SQL да JS.</p>
+        <div class="container">
+            <p>
+                Юльян.By &ndash;
+                Web-распрацоўка ад SQL да JS.
+            </p>
+            <p class="small text-left">
+                УНП HA6052430 |
+                Місюкевіч Юльян Валер'евіч |
+                Дата пастаноўкі на ўлік: 12.01.2023 |
+                Беларусь.
+            </p>
+        </div>
     </div>
 </footer>

@@ -11,140 +11,47 @@
                 <div class="block-heading">
                     <h2 class="text-info">Цены</h2>
                     <p>
-                        Список цен разработки анимированных элементов и не только.
+                        Список цен на разработку web-элементов элементов сайта.
                     </p>
                 </div>
 
                 <div class="row justify-content-center">
-                    <div class="col-md-5 col-lg-4">
-                        <div class="clean-pricing-item">
-                            <div class="heading">
-                                <h3>Шаблонный баннер</h3>
-                            </div>
-                            <p>
-                                Баннер по доступному готовому шаблону либо анимация с небольшим количеством объектов.
-                            </p>
-                            <div class="features">
-                                <h4><span class="feature">Анимированный фон:&nbsp;</span><span>Нет</span></h4>
-                                <h4><span class="feature">Тект:&nbsp;</span><span>3 объекта</span></h4>
-                                <h4><span class="feature">Изображение:&nbsp;</span><span>2 объекта</span></h4>
-                            </div>
-                            <div class="price">
-                                <h4>80 BYN</h4>
-                            </div>
-                            <a href="/ru/order?subject=Шаблонныбаннер" class="btn btn-outline-primary btn-block">Заказать</a>
-                        </div>
-                    </div>
+                    {% for product in products %}
+                        <div class="col-md-5 col-lg-4 mb-3">
+                            <div class="clean-pricing-item">
 
-                    <div class="col-md-5 col-lg-4">
-                        <div class="clean-pricing-item">
-                            <div class="ribbon"><span>Хит!</span></div>
-                            <div class="heading">
-                                <h3>Золотой стандарт</h3>
-                            </div>
-                            <p>
-                                Стандартный баннер под Ваши нужны с анимированным фоном, изображением и текстом.
-                            </p>
-                            <div class="features">
-                                <h4><span class="feature">Анимированный фон:&nbsp;</span><span>Есть</span></h4>
-                                <h4><span class="feature">Текст:&nbsp;</span><span>5 объектов</span></h4>
-                                <h4><span class="feature">Изображения:&nbsp;</span><span>5 объектов</span></h4>
-                            </div>
-                            <div class="price">
-                                <h4>150 BYN</h4>
-                            </div>
-                            <a href="/ru/order?subject=Стандартныбаннер" class="btn btn-primary btn-block">Заказать</a>
-                        </div>
-                    </div>
+                                {% if product.price < 500 %}
+                                    <div class="ribbon"><span>Хит!</span></div>
+                                {% endif %}
 
-                    <div class="col-md-5 col-lg-4">
-                        <div class="clean-pricing-item">
-                            <div class="heading">
-                                <h3>Расширенный сценарий</h3>
+                                <div class="heading">
+                                    <h4>{{ product.name }}</h4>
+                                </div>
+                                <div>
+                                    {{ product.description }}
+                                </div>
+                                <div class="features">
+{#                                    <h4><span class="feature">Анимированный фон:&nbsp;</span><span>Нет</span></h4>#}
+                                </div>
+                                <div class="price">
+                                    <h4>{{ product.price }} BYN</h4>
+                                </div>
+                                <a href="/ru/order?productId={{ product.id }}" class="btn btn-outline-primary btn-block">Заказать</a>
                             </div>
-                            <p>Анимация адаптированная под разную ширину экрана.</p><br>
-                            <div class="features">
-                                <h4><span class="feature">Анимированный фон:&nbsp;</span><span>Ёсць</span></h4>
-                                <h4><span class="feature">Текст:&nbsp;</span><span>10 объектов</span></h4>
-                                <h4><span class="feature">Изображения:&nbsp;</span><span>10 объектов</span></h4>
-                            </div>
-                            <div class="price">
-                                <h4>200 BYN</h4>
-                            </div>
-                            <a href="/ru/order?subject=Пашыраныбаннер" class="btn btn-outline-primary btn-block">Заказать</a>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
 
-                <p><br></p>
-
-                <div class="row justify-content-center">
-                    <div class="col-md-5 col-lg-4">
-                        <div class="clean-pricing-item">
-                            <div class="heading">
-                                <h3>Плакат А4</h3>
-                            </div>
-                            <p>
-                                Макет фармату А4 для печати.
-                                Зависит от дизайна.
-                                Указана минимальная цена.
-                            </p>
-                            <div class="price">
-                                <h4>250 BYN</h4>
-                            </div>
-                            <a href="/ru/order?subject=А4Макет" class="btn btn-outline-primary btn-block">Заказать</a>
-                        </div>
+                <div class="row">
+                    <div class="col">
+                        <p><br></p>
+                        <h2>
+                            А также
+                        </h2>
+                        <p>
+                            Любые другие услуги, кастающиеся web-сайтов и интернета. Цены — по договорённости.
+                        </p>
                     </div>
-
-                    <div class="col-md-5 col-lg-4">
-                        <div class="clean-pricing-item">
-                            <div class="heading">
-                                <h3>Буклет</h3>
-                            </div>
-                            <p>
-                                Двухсторонний А4 буклет.
-                                Зависит от дизайна.
-                                Указана минимальная цена.
-                            </p>
-
-                            <div class="price">
-                                <h4>320 BYN</h4>
-                            </div>
-                            <a href="/ru/order?subject=Буклет" class="btn btn-outline-primary btn-block">Заказать</a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-5 col-lg-4">
-                        <div class="clean-pricing-item">
-                            <div class="heading">
-                                <h3>Листовка А5</h3>
-                            </div>
-                            <p>
-                                Макет формата А5 для печати.
-                                Зависит от дизайна.
-                                Указана минимальная цена.
-                            </p>
-                            <div class="price">
-                                <h4>190 BYN</h4>
-                            </div>
-                            <a href="/ru/order?subject=А5Макет" class="btn btn-outline-primary btn-block">Заказать</a>
-                        </div>
-                    </div>
-
-                    <p><br></p>
-
-                    <div class="row">
-                        <div class="col">
-                            <p><br></p>
-                            <h2>
-                                А также
-                            </h2>
-                            <p>
-                                Любые другие услуги, кастающиеся реклами и интернета. Цены — по договорённости.
-                            </p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>

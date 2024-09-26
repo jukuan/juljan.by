@@ -1,11 +1,32 @@
 <footer class="page-footer dark">
     <div class="container">
         <div class="row">
-            <div class="col-sm-3" hidden="hidden" style="display: none">
-                <h5>Продвижение в интернете</h5>
+            <div class="col-sm-3">
+                <h5>Payments</h5>
                 <ul>
-                    <li><a href="/en/think-tech">Написать тех.задание</a></li>
-                    <li><a href="/en/order">Заказать</a></li>
+                    <li>
+                        <a href="/pay/erip">
+                            Payments using ЕРИП (ru, in Belarus)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/pay/methods">
+                            Payment methods (ru)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/pay/refund">
+                            Refund (ru)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-sm-3">
+                <h5>Optimize your web project</h5>
+                <ul>
+                    <li><a href="/en/think-tech">Write me the task</a></li>
+                    <li><a href="/en/order">Order</a></li>
                 </ul>
             </div>
 
@@ -17,11 +38,11 @@
                 </ul>
             </div>
 
-            <div class="col-sm-3" hidden="hidden" style="display: none">
-                <h5>Падтрымка</h5>
+            <div class="col-sm-3">
+                <h5>Support</h5>
                 <ul>
                     <li><a href="/en/faq">FAQ</a></li>
-                    <li><a href="/en/contacts">Обращение</a></li>
+                    <li><a href="/en/contacts">Contact me</a></li>
                 </ul>
             </div>
 
@@ -36,7 +57,7 @@
         </div>
 
         <div class="legal-info row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="d-flex d-inline-block align-items-center align-content-top">
                     {#<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" style="max-width: 48px">
                                 <circle cx="64" cy="64" r="50" fill="#f8f9fa" stroke="#343a40" stroke-width="1" />
@@ -44,19 +65,20 @@
                             </svg>#}
 
                     <div>
-                        <p>
-                            Don't call me. Use email please: <strong>i[at]juljan.by</strong>.
-                        </p>
-                        <p class="small">
-                            Below is information for the tax office of my country,
-                            you don’t have to read it.
-                            <br/>
-                            Provision of services:
-                            self-employed individual:
-                            Misiukevich Y.
-                            <br/>
-                            TIN (in Belarus): НА6052430
-                        </p>
+                        {% if (isHome|default(false)) %}
+                            <h5>Legal information</h5>
+                            <p>
+                                Below is information for the tax office of my country,
+                                you don’t have to read it.
+                            </p>
+                            <p>
+                                Phone: +375292186403.
+                                Don't call me. Use email please: <strong>i@juljan.by</strong>.
+                            </p>
+                            <p class="small">
+                                Provision of services: web-site development
+                            </p>
+                        {%  endif %}
 
 {#                        <p class="small">#}
 {#                            <strong>Working hours:</strong>#}
@@ -73,6 +95,14 @@
     </div>
 
     <div class="footer-copyright">
-        <p>Juljan.By &ndash; Code-driven Web Development Excellence.</p>
+        <div class="container">
+            <p>Juljan.By &ndash; Code-driven Web Development Excellence.</p>
+            <p class="small text-left">
+                Tax Number: HA6052430 |
+                Yulyan Misiukevich |
+                Registration date: 12.01.2023 |
+                Republic of Belarus.
+            </p>
+        </div>
     </div>
 </footer>

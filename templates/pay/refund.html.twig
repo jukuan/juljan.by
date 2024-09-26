@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Условия возврата денег
+{% endblock %}
+
+
+{% block body %}
+    <main class="page samples-page">
+        <section class="clean-block clean-form dark">
+            <div class="container">
+                <div class="block-heading"></div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Описание оплаты</h3>
+
+                        <ul>
+                            <li>
+                                <a href="/pay/erip">
+                                    Оплата через систему ЕРИП
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/pay/methods">
+                                    Способы оплаты через сайт
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/pay/refund">
+                                    Условия возврата денег
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-8">
+                        <header>
+                            <h3>Условия возврата денег</h3>
+                        </header>
+
+                        <article>
+                            <p>
+                                Для возврата денег, оплаченных за услуги, необходимо соблюдение условий:
+                            </p>
+
+                            <ul>
+                                <li>
+                                    Наличие свободного волеизъявление заявителя
+                                </li>
+                                <li>
+                                    Наличие номера и даты заказа
+                                </li>
+                                <li>
+                                    Между текущей датой и датой оплаты менее 30 дней
+                                </li>
+                                <li>
+                                    Обращение на email i@juljan.by с темой "Вяртанне аплочаных грошай"  + номер заказа
+                                </li>
+                            </ul>
+
+                            <p>
+                                Возврат денежных средств осуществляется на карту, с которой ранее была произведена оплата. Срок поступления денежных средств на карту от 1 до 30 дней с момента осуществления возврата Продавцом.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+{% endblock %}

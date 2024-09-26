@@ -8,13 +8,15 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/annotations": "^2.0",
-        "doctrine/doctrine-bundle": "^2.10",
-        "doctrine/doctrine-migrations-bundle": "^3.2",
-        "doctrine/orm": "^2.16",
-        "easycorp/easyadmin-bundle": "^4",
-        "league/commonmark": "^2.4",
-        "phpdocumentor/reflection-docblock": "^5.3",
-        "phpstan/phpdoc-parser": "^1.23",
+        "doctrine/dbal": "^3",
+        "doctrine/doctrine-bundle": "^2.13",
+        "doctrine/doctrine-migrations-bundle": "^3.3",
+        "doctrine/orm": "^2.19",
+        "easycorp/easyadmin-bundle": "^4.12",
+        "knplabs/doctrine-behaviors": "^1.4",
+        "league/commonmark": "^2.5",
+        "phpdocumentor/reflection-docblock": "^5.4",
+        "phpstan/phpdoc-parser": "^1.32",
         "symfony/asset": "6.3.*",
         "symfony/console": "6.3.*",
         "symfony/doctrine-messenger": "6.3.*",
@@ -42,8 +44,8 @@
         "symfony/validator": "6.3.*",
         "symfony/web-link": "6.3.*",
         "symfony/yaml": "6.3.*",
-        "twig/extra-bundle": "^2.12|^3.7",
-        "twig/twig": "^2.12|^3.7"
+        "twig/extra-bundle": "^3.8",
+        "twig/twig": "^3.14"
     },
     "config": {
         "allow-plugins": {
@@ -98,7 +100,7 @@
         "symfony/browser-kit": "6.3.*",
         "symfony/css-selector": "6.3.*",
         "symfony/debug-bundle": "6.3.*",
-        "symfony/maker-bundle": "^1.50",
+        "symfony/maker-bundle": "^1.53",
         "symfony/phpunit-bridge": "^6.3",
         "symfony/stopwatch": "6.3.*",
         "symfony/web-profiler-bundle": "6.3.*"

@@ -152,3 +152,15 @@ canvas#jCesliary {
         margin-left: -40px;
     }
 }
+
+.b-legal p.small {
+    margin: 0 0 2px;
+}
+
+.l-pay-logos {
+    margin: 5px 0;
+}
+
+.l-pay-logos .b-pay-logo {
+    margin: 6px 2px;
+}
