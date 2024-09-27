@@ -5,13 +5,10 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
-use Twig\Environment as TwigEnvironment;
 use Symfony\Component\HttpFoundation\Request;
 
-class KinaController extends AbstractController
+class KinaController extends BaseFrontController
 {
     #[Route('/kina/kong', name: 'kina_kong')]
     public function index(Request $request): Response
@@ -33,7 +30,8 @@ class KinaController extends AbstractController
                     $row = [];
                 }
 
-                $row[] = $line;;
+                $row[] = $line;
+                ;
             }
 
             if ($row) {

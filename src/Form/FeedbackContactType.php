@@ -14,8 +14,7 @@ class FeedbackContactType extends AbstractType
 {
     public function __construct(
         private readonly TranslatorInterface $translator
-    )
-    {
+    ) {
 
     }
 
@@ -35,7 +34,6 @@ class FeedbackContactType extends AbstractType
 //            ->add('browser')
 //            ->add('ip_addr')
 //            ->add('page')
-//            ->add('product')
             ->add('send', SubmitType::class, [
                 'label' => $this->translator->trans('form.send')
             ])

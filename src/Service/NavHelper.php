@@ -14,8 +14,7 @@ class NavHelper
     public function __construct(
         private readonly TranslatorInterface $translator,
         private readonly RequestStack $requestStack,
-    )
-    {
+    ) {
     }
 
     private const SITE_PAGES = [

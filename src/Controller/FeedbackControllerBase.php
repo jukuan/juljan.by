@@ -2,23 +2,20 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use App\Form\FeedbackContactType;
-use App\Service\LangHelper;
-use App\Service\NavHelper;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Twig\Environment as TwigEnvironment;
 
-class FeedbackController extends FrontController
+class FeedbackControllerBase extends BaseFrontController
 {
     #[Route('/{lang}/feedback', name: 'site_feedback')]
-    public function index(Request $request, string $lang): Response
+    public function index(string $lang): Response
     {
         return $this->render($lang.'/feedback/index.html.twig', [
-            'controller_name' => 'FeedbackController',
+            'controller_name' => 'FeedbackControllerBase',
         ]);
     }
 
@@ -51,9 +48,21 @@ class FeedbackController extends FrontController
     #[Route('/{lang}/order', name: 'feedback_order')]
     public function order(Request $request, string $lang): Response
     {
+        $pid = $this->getRequest()->get('pid');
+        $product = $pid ? $this->em->getRepository(Product::class)->findOneBy(['id' => $pid]) : null;
+
         $view = $lang . '/contacts.html.twig';
         $form = $this->createForm(FeedbackContactType::class);
         $form->handleRequest($request);
+
+        if ($product) {
+//            $form->add('product', EntityType::class, [
+//                'class' => Product::class,
+//                'choice_label' => 'name',
+////                'label' => $this->translator->trans('form.product'),
+////                'placeholder' => $this->translator->trans('form.select_product'),
+//            ]);
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Process the form data

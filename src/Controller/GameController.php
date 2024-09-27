@@ -11,15 +11,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment as TwigEnvironment;
 
-class GameController extends AbstractController
+class GameController extends BaseFrontController
 {
-    public function __construct(
-        private readonly NavHelper $navHelper,
-        private readonly TwigEnvironment $twig,
-    )
-    {
-    }
-
     #[Route('/{lang}/game/{slug}', name: 'site_game_view')]
     public function view(string $lang, string $slug): Response
     {

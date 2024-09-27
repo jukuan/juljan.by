@@ -12,8 +12,7 @@ class NavItem
         private readonly string $href,
         private readonly string $text,
         private readonly string $requestUri = '/',
-    )
-    {
+    ) {
     }
 
     public function isActive(): bool

@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment as TwigEnvironment;
 use Symfony\Component\HttpFoundation\Request;
 
-class HelperController extends FrontController
+class HelperControllerBase extends BaseFrontController
 {
     #[Route('/{lang}/helper/txt2tbl', name: 'helper_txt2tbl')]
     public function index(Request $request): Response
@@ -35,7 +35,7 @@ class HelperController extends FrontController
                     $row = [];
                 }
 
-                $row[] = $line;;
+                $row[] = $line;
             }
 
             if ($row) {
@@ -65,16 +65,5 @@ class HelperController extends FrontController
         return $this->render('be/helper/txt2tbl.html.twig', [
             'table' => $table,
         ]);
-    }
-
-    private function renderLangView(string $lang, string $view, array $parameters = []): Response
-    {
-        $view = $this->getLangView($lang, $view);
-        $parameters = array_merge($parameters, [
-            'lang' => $lang,
-            'navHelper' => $this->navHelper,
-        ]);
-
-        return $this->render($view, $parameters);
     }
 }

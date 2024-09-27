@@ -5,19 +5,12 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Product;
-use App\Service\AssetsFetcher;
-use App\Service\LangHelper;
-use App\Service\NavHelper;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Contracts\Translation\TranslatorInterface;
-use Twig\Environment as TwigEnvironment;
 
-class SiteController extends FrontController
+class SiteControllerBase extends BaseFrontController
 {
     #[Route('/', name: 'site_index')]
     public function index(Request $request): Response
@@ -65,18 +58,21 @@ class SiteController extends FrontController
         $parameters = array_merge($parameters, [
             'lang' => $lang,
             'navHelper' => $this->navHelper,
-            'payLogos' => $this->assetsFetcher->getPayLogoSrc(),
         ]);
 
         return $this->render($view, $parameters);
     }
 
-    private function getLangView(string $lang, string $view): string
+    private function getLangView(string $lang, string $file): string
     {
-        $view = sprintf('%s/%s.html.twig', $lang, $view);
+        $view = sprintf('%s/%s.html.twig', $lang, $file);
 
         if (!$this->twig->getLoader()->exists($view)) {
-            throw new NotFoundHttpException(sprintf('Template "%s" not found', $view));
+            $view = sprintf('%s/%s.twig', $lang, $file);
+
+            if (!$this->twig->getLoader()->exists($view)) {
+                throw new NotFoundHttpException(sprintf('Template "%s" not found', $view));
+            }
         }
 
         return $view;

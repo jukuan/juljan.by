@@ -21,6 +21,6 @@ class TranslationsSimpleField implements FieldInterface
             ->setFormTypeOptions([
                 'fields' => $fieldsConfig,
             ])
-            ;
+        ;
     }
 }

@@ -10,8 +10,7 @@ class AssetsFetcher
 {
     public function __construct(
         private readonly string $projectDir
-    )
-    {
+    ) {
 
     }
     public function getPayLogoSrc(): array

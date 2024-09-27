@@ -18,8 +18,7 @@ class ArticleController extends AbstractController
     public function __construct(
         private readonly NavHelper $navHelper,
         private readonly ArticleToHtmlTransformer $articleToHtml,
-    )
-    {
+    ) {
     }
 
     #[Route('/{lang}/art/{slug}', name: 'article_post')]

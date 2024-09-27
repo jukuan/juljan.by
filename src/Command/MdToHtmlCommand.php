@@ -21,8 +21,7 @@ class MdToHtmlCommand extends Command
     public function __construct(
         private readonly ArticleToHtmlTransformer $articleToHtmlTransformer,
         string $name = null
-    )
-    {
+    ) {
         parent::__construct($name);
     }
 
@@ -42,7 +41,7 @@ class MdToHtmlCommand extends Command
         }
 
         $this->articleToHtmlTransformer->process(
-            fn(string $msg) => $io->info($msg)
+            fn (string $msg) => $io->info($msg)
         );
 
         return Command::SUCCESS;

@@ -15,8 +15,7 @@ class ExceptionListener
     public function __construct(
         private readonly Environment $twig,
         private readonly NavHelper $navHelper,
-    )
-    {
+    ) {
     }
 
     public function onKernelException(ExceptionEvent $event)

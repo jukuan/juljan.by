@@ -59,10 +59,10 @@
         <div class="legal-info row">
             <div class="col-md-12">
                 <div class="d-flex d-inline-block align-items-center align-content-top">
-                    {#<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" style="max-width: 48px">
-                                <circle cx="64" cy="64" r="50" fill="#f8f9fa" stroke="#343a40" stroke-width="1" />
-                                <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#343a40" font-size="96" font-family="Brush Script MT" transform="rotate(90, 64, 64)">Ю</text>
-                            </svg>#}
+{#                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" style="max-width: 48px">#}
+{#                        <circle cx="64" cy="64" r="50" fill="#f8f9fa" stroke="#343a40" stroke-width="1" />#}
+{#                        <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#343a40" font-size="96" font-family="Brush Script MT" transform="rotate(90, 64, 64)">Ю</text>#}
+{#                    </svg>#}
 
                     <div>
                         {% if (isHome|default(false)) %}
@@ -72,34 +72,49 @@
                                 you don’t have to read it.
                             </p>
                             <p>
-                                Phone: +375292186403.
-                                Don't call me. Use email please: <strong>i@juljan.by</strong>.
+                                Phone: +375<sup>29</sup>2186403.
+                                Don't call me. Use email please: <strong>i@juljan.by</strong> (Be sure to include the letter "ў" in the subject line, otherwise the letter will end up in spam).
                             </p>
                             <p class="small">
-                                Provision of services: web-site development
+                                Address: 231300 Belarus, Lida, Rybinowsky-st, 82
                             </p>
                         {%  endif %}
 
-{#                        <p class="small">#}
-{#                            <strong>Working hours:</strong>#}
-{#                            Mon-Sat: 00:00—02:00, 08:00-10:00, 19:00-23:30.#}
-{#                        </p>#}
+                        <p class="small">
+                            <strong>Provision of services</strong>:
+                            web-site development, fixing computers.
+                        </p>
+
+                        <p class="small">
+                            <strong>Working hours:</strong>
+                            Mon-Sat: 19:30-22:30 (Minsk timezone), personally.
+                            The website site works around the clock 24/7.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 text-right">
-
+            <div class="col-md-12 text-center">
+                <div class="l-pay-logos">
+                    {% for imgSrc in payLogos %}
+                        <span class="b-pay-logo">
+                            <img height="42" src="{{ imgSrc }}" alt=""/>
+                        </span>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
 
     <div class="footer-copyright">
         <div class="container">
-            <p>Juljan.By &ndash; Code-driven Web Development Excellence.</p>
+            <p>
+                Juljan.By &ndash;
+                Code-driven Web Development Excellence.
+            </p>
             <p class="small text-left">
-                Tax Number: HA6052430 |
-                Yulyan Misiukevich |
+                Tax Number: <strong>HA6052430</strong> |
+                Yulyan Misiukevich (Valery-son) |
                 Registration date: 12.01.2023 |
                 Republic of Belarus.
             </p>

@@ -9,62 +9,46 @@
     <section class="clean-block features">
         <div class="container">
             <div class="block-heading">
-                <h2 class="text-info">Паслугі</h2>
-                <p>
-                    Мы любім распрацоўваць дынамічныя прыгожыя анімацыі, якія часта называюць баннерамі.
-                </p>
+                <h2 class="text-info">Услуги</h2>
             </div>
 
             <div class="row justify-content-center">
-                <div class="col">
-                    <h2>Апроч гэтага</h2>
-                    <p>
-                        Маем досвед стварэння розных баннераў і рэкламнай прадукцыі.
-                        Бо робім рэкламныя элементы даўно.
-                        Займаемся вырабам электронных макетаў рэкламнай прадукцыі.
-                        Ажыццяўляем індывідуальны падыход.
-                        Можам падрыхтаваць макет любога друкаванага, візуальнага або тактыльнага элемента.
-                    </p>
-                    <br>
-                    <br>
+                <p>Предоставляемые услуги можно разделить на следующие несколько основных категорий</p>
+                <div class="col-8">
+                    <ul>
+                        <li>
+                            <strong>Разработка сайтов</strong>:
+                            Создание уникальных веб-платформ, от сайтов-визиток до интернет-магазинов, с фокусом на функциональности, без заморочек про дизайн.
+                            Ожидаю что ТЗ и/или дизайн будет от Вас.
+                        </li>
+                        <li>
+                            <strong>Установка и настройка компьютеров</strong>: в основном Linux: Debian, RHEL, главное чтобы был Интернет и ssh-доступ.
+                        </li>
+                        <li>
+                            <strong>Настройка программного обеспечения</strong>: Вот только, пожалуйста, без Бітрікса и 1С.
+                            А так могу помочь настроить необходимое программное обеспечение для эффективной работы вашего бизнеса или личного пользования.
+                        </li>
+                        <li>
+                            <strong>Онлайн компьютерное обучение</strong>:
+                            Обучение работе на ПК, программированию и другим компьютерным навыкам через онлайн-курсы для расширения ваших знаний и навыков.
+                            Тут я выступаю как очень опытный теле-врач.
+                        </li>
+                    </ul>
                 </div>
             </div>
 
             <div class="row justify-content-center">
-                <div class="col-md-5 feature-box">
-                    <i class="icon-printer icon"></i>
-                    <h4>Макеты для друку</h4>
-                    <p>
-                        Фарматы:
-                        PDF, SVG, PNG, RTF, DOC.
-                    </p>
-                </div>
-
-                <div class="col-md-5 feature-box">
-                    <i class="icon-docs icon"></i>
-                    <h4>Брашуры, газеты, часопісы</h4>
-                    <p>
-                        Фарматы:
-                        PDF, PNG, RTF, DOC.
-                    </p>
-                </div>
-
-                <div class="col-md-5 feature-box">
-                    <i class="icon-crop icon"></i>
-                    <h4>Статычны баннер</h4>
-                    <p>
-                        Фарматы:
-                        GIF, PNG, SVG
-                    </p>
-                </div>
-
-                <div class="col-md-5 feature-box">
-                    <i class="icon-film icon"></i>
-                    <h4>Дынамічны баннер</h4>
-                    <p>
-                        JavaScript, HTML5, CSS3
-                    </p>
-                </div>
+                {% for product in services %}
+                    <div class="col-md-4 feature-box">
+                        <i class="{{ product.icon|default('icon-printer') }} icon"></i>
+                        <a href="{{ product.orderHref }}">
+                            <h4>{{ product.name }}</h4>
+                        </a>
+                        <p>
+                            {{ product.description }}
+                        </p>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>

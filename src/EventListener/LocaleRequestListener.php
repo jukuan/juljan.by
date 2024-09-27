@@ -13,8 +13,7 @@ class LocaleRequestListener
     public function __construct(
         private readonly LangHelper $langHelper,
         private readonly TranslatorInterface $translator,
-    )
-    {
+    ) {
     }
 
     public function onKernelRequest(RequestEvent $event): void

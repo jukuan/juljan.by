@@ -21,8 +21,7 @@ class ActController extends AbstractController
         private readonly NavHelper $navHelper,
         private readonly TwigEnvironment $twig,
         private readonly EntityManagerInterface $em,
-    )
-    {
+    ) {
     }
 
     private const SLUGS = [
@@ -152,7 +151,7 @@ class ActController extends AbstractController
             $maxDate = max($maxDate, $date);
         }
 
-//        $details['description'] = '';
+        //        $details['description'] = '';
         $details['dateRange'] = sprintf('%s &ndash; %s', $minDate?->format('Y-m-d'), $maxDate?->format('Y-m-d'));
         $details['actNum'] = date('Y-m-d');
 

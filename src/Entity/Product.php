@@ -154,4 +154,9 @@ class Product
 
         return $this;
     }
+
+    public function getOrderHref(): string
+    {
+        return sprintf('/%s/order?pid=%d', $this->lang, $this->id);
+    }
 }

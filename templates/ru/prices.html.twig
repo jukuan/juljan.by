@@ -36,7 +36,9 @@
                                 <div class="price">
                                     <h4>{{ product.price }} BYN</h4>
                                 </div>
-                                <a href="/ru/order?productId={{ product.id }}" class="btn btn-outline-primary btn-block">Заказать</a>
+                                <a href="{{ product.orderHref }}" class="btn btn-outline-primary btn-block">
+                                    Заказать
+                                </a>
                             </div>
                         </div>
                     {% endfor %}
