@@ -15,9 +15,11 @@ class SiteControllerBase extends BaseFrontController
     #[Route('/', name: 'site_index')]
     public function index(Request $request): Response
     {
-        $locale = $request->getLocale();
-        $response = $this->redirect('/' . $locale);
-        $response->headers->setCookie($this->langHelper->createCookie($locale));
+        $lang = $request->getLocale();
+        $lang = $this->prepareLang($lang);
+
+        $response = $this->redirect('/' . $lang);
+        $response->headers->setCookie($this->langHelper->createCookie($lang));
 
         return $response;
     }
@@ -25,6 +27,8 @@ class SiteControllerBase extends BaseFrontController
     #[Route('/{lang}', name: 'site_home')]
     public function home(string $lang): Response
     {
+        $lang = $this->prepareLang($lang);
+
         return $this->renderLangView($lang, 'home', [
             'isHome' => true,
         ]);
@@ -33,6 +37,7 @@ class SiteControllerBase extends BaseFrontController
     #[Route('/{lang}/prices', name: 'prices_page')]
     public function pagePrices(string $lang): Response
     {
+        $lang = $this->prepareLang($lang);
         $products = $this->em->getRepository(Product::class)->findBy([
             'lang' => $lang,
         ]);
@@ -45,6 +50,8 @@ class SiteControllerBase extends BaseFrontController
     #[Route('/{lang}/{page}', name: 'site_page')]
     public function page(string $lang, string $page): Response
     {
+        $lang = $this->prepareLang($lang);
+
         if (!$this->navHelper->isSitePage($page)) {
             throw new NotFoundHttpException(sprintf('Site page "%s" not found', $page));
         }

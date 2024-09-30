@@ -35,6 +35,11 @@ class NavHelper
         'contacts',
     ];
 
+    protected function getRequest(): ?\Symfony\Component\HttpFoundation\Request
+    {
+        return $this->requestStack->getCurrentRequest();
+    }
+
     public function isSitePage(string $page): bool
     {
         return in_array($page, self::SITE_PAGES, true);
@@ -49,9 +54,17 @@ class NavHelper
         return sprintf('/%s/%s', $this->translator->getLocale(), $href);
     }
 
-    public function getLang(): string
+    public function getLang(?string $lang = null): string
     {
-        return $this->translator->getLocale();
+        if (null === $lang) {
+            $lang = $this->getRequest()->get('lang');
+        }
+
+        if (!$lang) {
+            $lang = $this->translator->getLocale();
+        }
+
+        return $lang;
     }
 
     public function isCurrentLang(string $lang): bool
@@ -82,7 +95,13 @@ class NavHelper
             return new NavItem($href, $text, $requestUri);
         }, self::NAV_HEADER);
 
-        return [new NavItem('/', $this->translator->trans('nav.home'), $requestUri)] + $items;
+        return [
+            new NavItem(
+                sprintf('/%s', $this->getLang()),
+                $this->translator->trans('nav.home'),
+                $requestUri
+            )
+        ] + $items;
     }
 
     public function createArticleItems(string $lang, array $articleIndex): array

@@ -18,6 +18,7 @@ use Twig\Environment as TwigEnvironment;
 abstract class BaseFrontController extends AbstractController
 {
     private const DEFAULT_LANG = 'ru';
+    private const LANGUAGES = ['be', 'en', 'ru'];
 
     public function __construct(
         protected readonly AssetsFetcher $assetsFetcher,
@@ -29,6 +30,22 @@ abstract class BaseFrontController extends AbstractController
         protected readonly RequestStack $requestStack,
         protected readonly TranslatorInterface $translator,
     ) {
+    }
+
+    protected function prepareLang(string $locale): string
+    {
+        $locale = strtolower($locale);
+        $locale = trim($locale, '/ ');
+
+        $locale = str_replace('-', '_', $locale);
+        $parts = explode('_', $locale);
+        $locale = $parts ? reset($parts) : $locale;
+
+        if (!in_array($locale, self::LANGUAGES, true)) {
+            $locale = self::DEFAULT_LANG;
+        }
+
+        return $locale;
     }
 
     protected function getRequest(): ?\Symfony\Component\HttpFoundation\Request
@@ -60,7 +77,18 @@ abstract class BaseFrontController extends AbstractController
     {
         $this->productsFetcher->setLang($this->getLang($parameters));
 
-        $parameters['payLogos'] = $this->assetsFetcher->getPayLogoSrc();
+        if (!isset($parameters['lang'])) {
+            $parameters['lang'] = $this->getLang($parameters);
+        }
+
+        if (!isset($parameters['navHelper'])) {
+            $parameters['navHelper'] = $this->navHelper;
+        }
+
+        if (!isset($parameters['payLogos'])) {
+            $parameters['payLogos'] = $this->assetsFetcher->getPayLogoSrc();
+        }
+
         $parameters['products'] = $this->productsFetcher->getProducts();
         $parameters['services'] = $this->productsFetcher->getServices();
 
