@@ -16,7 +16,9 @@ class GameController extends BaseFrontController
     #[Route('/{lang}/game/{slug}', name: 'site_game_view')]
     public function view(string $lang, string $slug): Response
     {
-        return $this->renderLangView($lang, $slug);
+        return $this->render($lang.'/game/'.$slug.'.html.twig', [
+            'lang' => $lang,
+        ]);
     }
 
     private function renderLangView(string $lang, string $view, array $parameters = []): Response

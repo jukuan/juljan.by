@@ -135,6 +135,9 @@ class ActController extends AbstractController
             $rate = 10;
         }
 
+        if ('glg' === $slug) {
+            $details['currency'] = 'р';
+        }
 
         foreach ($rows as $row) {
             $hours = $row['hours'] ?: 1;
