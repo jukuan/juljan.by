@@ -115,10 +115,6 @@ class ActController extends AbstractController
             ['projectKey' => $slug]
         )->fetchAllAssociative();
 
-        if ([] === $rows) {
-            // 404
-        }
-
         $minDate = $maxDate = null;
         $jobs = [];
         $details = [
@@ -136,6 +132,7 @@ class ActController extends AbstractController
         }
 
         if ('glg' === $slug) {
+            $rate = 30;
             $details['currency'] = 'р';
         }
 
