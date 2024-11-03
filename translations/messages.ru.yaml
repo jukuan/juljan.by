@@ -19,6 +19,8 @@ error:
     message: Упс. Такой страницы нету
 
 form:
+  service: Услуга
+  sum: Сумма
   name: Имя
   email: Имейл
   text: Текст

@@ -17,7 +17,7 @@ use Twig\Environment as TwigEnvironment;
 
 abstract class BaseFrontController extends AbstractController
 {
-    private const DEFAULT_LANG = 'ru';
+    protected const DEFAULT_LANG = 'ru';
     private const LANGUAGES = ['be', 'en', 'ru'];
 
     public function __construct(
@@ -53,7 +53,7 @@ abstract class BaseFrontController extends AbstractController
         return $this->requestStack->getCurrentRequest();
     }
 
-    protected function getLang(array $parameters): string
+    protected function getLang(array $parameters = []): string
     {
         $lang = $parameters['lang'] ?? null;
 

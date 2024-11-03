@@ -19,6 +19,8 @@ error:
     message: Старонкі не існуе
 
 form:
+  service: Паслуга
+  sum: Сума
   name: Імя
   email: Імэйл
   text: Тэкст

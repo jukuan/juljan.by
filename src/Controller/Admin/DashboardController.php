@@ -2,10 +2,9 @@
 
 namespace App\Controller\Admin;
 
-use __\Post;
 use App\Entity\Feedback;
 use App\Entity\PostBe;
-use App\Entity\PostRu;
+use App\Entity\LogTime;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -43,8 +42,6 @@ class DashboardController extends AbstractDashboardController
     #[Route('/logout', name: 'logout')]
     public function logout(): Response
     {
-
-
         return $this->redirect('/');
     }
 
@@ -59,6 +56,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Feedback', 'fas fa-list', Feedback::class);
         yield MenuItem::linkToCrud('Posts Be', 'fas fa-list', PostBe::class);
+//        yield MenuItem::linkToCrud('LogTime', 'fas fa-list', LogTime::class);
         //        yield MenuItem::linkToCrud('Posts Ru', 'fas fa-list', PostRu::class);
         yield MenuItem::linkToLogout('Logout', 'fa fa-exit');
     }

@@ -45,13 +45,9 @@
                         </header>
 
                         <article>
-                            <p class="lead">
-                                Будет доступна после подключения сайта в системе bePaid.
-                            </p>
-
-                            <p>
-                                Пожалуйста, зайдите на эту страницу позже
-                            </p>
+                            <form method="POST">
+                                {{ form(paymentForm) }}
+                            </form>
                         </article>
                     </div>
                 </div>
