@@ -123,18 +123,16 @@ class ActController extends AbstractController
             'currency' => '$',
         ];
 
-        if ('dtl' === $slug) {
-            $rate = 15;
-        } elseif ('ppp' === $slug) {
+        if ('ppp' === $slug) {
             $rate = 20;
         } elseif ('gvr' === $slug) {
-            $rate = 12;
+            $rate = 13.5;
             $details['currency'] = 'р';
-        } elseif ('glg' === $slug) {
+        } elseif ('glg' === $slug || 'mfk' === $slug) {
             $rate = 30;
             $details['currency'] = 'р';
         } else {
-            $rate = 10;
+            $rate = 15;
         }
 
         foreach ($rows as $row) {
