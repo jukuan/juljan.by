@@ -23,10 +23,10 @@ class BePaymentService implements IPaymentService
         BeGatewaySettings::$shopId = 29364;
 
         // Shop secret key issued by your payment provider
-        BeGatewaySettings::$shopKey = 'f1042563396c06acf26aa96dc5aba674541c87db8bd88cebb0a1a8952e5883fe';
+        BeGatewaySettings::$shopKey = '7d0c5a45f43392651836797e7ec0ab441972a94e182989b88206e5540f738fbb';
 
         // Shop secret key issued by your payment provider
-        BeGatewaySettings::$shopPubKey = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw9WNfzN1mE1x2sIhi403UBnFV8iZuWv3VBL9d9YvY2ad1QtMHPCjS1JHe1VpZ19LhUlvpa1AvWSXHb+zml0LSh/Kv//zrrnn95aNP8jbsr6XUhTgRcPbRyO96nKwQiSL5yWK8w3C8mfALhe6UlkRb7+C5NDAPDwQg4lMoEtKLazCcAPva99+6s9F1y4qC0dHhfsfxhBUa7n83WZVGDNL4DX8rKr3clAi/kadpE+24h3BhDRtR+1y9rSdelVfgd/ZqclS+RGCBHhTLTik7LxUnXKNY1b1wxDELZdf1tBGex+NjiBFjbo0tdU9l7jmZ7Z2qBXQYDrcSsGh19H/zKPG/QIDAQAB';
+        BeGatewaySettings::$shopPubKey = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAya7jwGs1ShA54vUqa+R7LWpa97PqOKx3ud8GoxVTCAeb0ifp6VBubU9aCfmN6bwl8J0NCvomDsBmiYfKhKOAgauvSm4bfUuPC921vnCCjPV1Df68sje4IqbeEqDNr+CMHFqweeMemfB0GRMA1UJa2LTkJ0R2fJSfgo6+jNO51c3rrNs8O+vU28X8oFFjDt86yHb80qn21KvKp7Xra8NR9aydr0bband/YjX33fxo+ifu5ayEoVUiZth/K1a33YL3c5D0z820ZZRblRKWubFkqVuh9WCkMPX1USdJ+B6fRep9InVXFTKZRYDz3pcYJ3hrGQ8oPxRbng3tqMy1uK1/xwIDAQAB';
 
         // Checkout URL of your payment provider. Confirm it with support team or refer
         // to your payment provider API documentation
@@ -38,7 +38,7 @@ class BePaymentService implements IPaymentService
 
         // API URL of your payment provider. Confirm it with support team or refer
         // to your payment provider API documentation
-        BeGatewaySettings::$apiBase = 'https://api.begateway.com';
+        BeGatewaySettings::$apiBase = 'https://api.bepaid.by';
     }
 
 
@@ -49,8 +49,6 @@ class BePaymentService implements IPaymentService
         $transaction->money->setCurrency('BYN');
         $transaction->setName($payment->getService());
         $transaction->setDescription(sprintf('Date: %s', date('Y-m-d H:i')));
-
-//        $transaction->setTestMode(true);///
 
         return $transaction;
     }
@@ -70,7 +68,6 @@ class BePaymentService implements IPaymentService
         } else {
             $payment->addKeyParams('payment', $response->getResponseArray());
             $payLink = '';
-            dd($response->getResponseArray()); // tmp
         }
 
         $this->em->persist($payment);
